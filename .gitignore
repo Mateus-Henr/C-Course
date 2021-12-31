@@ -57,3 +57,4 @@ dkms.conf
 **/out/**
 **/target/**
 **/cmake-build-debug/**
+main
