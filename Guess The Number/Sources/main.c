@@ -3,14 +3,15 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 
 #define USER_INITIAL_VALUE -1
 #define ZERO 0
-#define TRIES 5
-#define TRIES_LEFT "\nWrong number! You have %i trie(s) left."
+#define MAX_TRIES 5
+#define TRIES_LEFT "\nWrong number! You have %i tr%s left."
 #define MINIMUM_RANDOM_NUMBER 0
-#define MAXIMUM_RANDOM_NUMBER 20
+#define MAXIMUM_RANDOM_NUMBER 21
 #define TOO_HIGH "\nToo High!\n"
 #define TOO_LOW "\nToo Low!\n"
 #define INVALID_INPUT "\nInvalid input, the input must be a number!\n"
@@ -29,12 +30,14 @@ int main(void)
     
     unsigned int randomNumber = ZERO;
     int userNumber = USER_INITIAL_VALUE;
-    int chances = ZERO;
+    int chances = MAX_TRIES;
     srand(time(NULL));
 
     randomNumber = rand() % MAXIMUM_RANDOM_NUMBER;
 
-    while (chances != TRIES)
+    printf("Guessing game\nYou have %d tries left\n\n", chances);
+
+    while (chances)
     {
         printf("Try to guess the number:\n");
         if (!scanf("%d", &userNumber))
@@ -51,28 +54,22 @@ int main(void)
             continue;
         }
 
-        if (userNumber > randomNumber)
-        {
-            printf(TRIES_LEFT, TRIES - chances);
-            printf(TOO_HIGH);
-        }
-        else if (userNumber < randomNumber)
-        {
-            printf(TRIES_LEFT, TRIES - chances);
-            printf(TOO_LOW);
-        }
-        else
+        if (userNumber == randomNumber)
         {
             printf(CONGRATULATIONS, randomNumber);
             break;
         }
-
-        chances++;
+        else
+        {
+            chances--;
+            printf(TRIES_LEFT, chances, chances == 1 ? "y" : "ies");
+            userNumber > randomNumber ? printf(TOO_HIGH) : printf(TOO_LOW);
+        }
     }
 
     if (userNumber != randomNumber)
     {
-        printf(LOST, TRIES, randomNumber);
+        printf(LOST, MAX_TRIES, randomNumber);
     }
 
     return ZERO;
