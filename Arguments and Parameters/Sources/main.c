@@ -29,11 +29,10 @@
 /*
  * multiplyTwoNumbers();
  *
- * Multiplies two numbers.
+ * Multiplies two numbers and prints the result.
  *
  * @param   x   an integer number.
  * @param   y   an integer number.
- * @return      the multiplication of the two numbers.
  */
 void multiplyTwoNumbers(int x, int y) // Function definition (2 parameters)
 {
