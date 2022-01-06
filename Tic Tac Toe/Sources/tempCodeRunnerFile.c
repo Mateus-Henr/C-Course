@@ -1,0 +1,1 @@
+board[0] == board[4] == board[9]
