@@ -3,6 +3,7 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #define BOARD_SIZE 9
 #define X 'X'
@@ -10,6 +11,7 @@
 #define FIRST_PLAYER 1
 #define SECOND_PLAYER 2
 #define INVALID_INPUT "\nInvalid input.\n"
+#define DRAW "\nDRAW!\n"
 #define CONGRATULATIONS "\nCongratulations player with the symbol %c!! You have won!\n"
 
 char board[BOARD_SIZE];
@@ -18,8 +20,13 @@ void drawBoard(void);
 
 void clean_stdin(void);
 
-unsigned int checkIfWin(char symbol);
+void markBoard(char mark);
 
+unsigned int checkIfWon(char symbol);
+
+/*
+ * Manages user input and the the execution of the game.
+ */
 int main(void)
 {
     for (int i = 0; i < BOARD_SIZE; i++)
@@ -69,20 +76,25 @@ int main(void)
             currPlayer = FIRST_PLAYER;
         }
 
-        if (checkIfWin(board[input - 1]))
+        system("clear");
+
+        if (checkIfWon(board[input - 1]))
         {
             break;
         }
 
+        printf(DRAW);
+
         playsLeft--;
     }
-
-
 
     return 0;
 }
 
-void drawBoard()
+/*
+ * Prints the game board.
+ */
+void drawBoard(void)
 {
     printf("\t\tTic Tac Toe\n\tPlayer 1 - X\tPlyer 2 - O\n\n\t\t");
 
@@ -101,7 +113,14 @@ void drawBoard()
     printf("\n");
 }
 
-unsigned int checkIfWin(char symbol)
+
+/*
+ * Checks if the player has won.
+ * 
+ * @param   symbol   symbol that the player is using.
+ * @return           true or false indicating whether or not the player has won or not.
+ */
+unsigned int checkIfWon(char symbol)
 {
     int hasWon = 0;
 
