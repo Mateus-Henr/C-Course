@@ -1,0 +1,1 @@
+sizeof(arrayOfStrings) / sizeof(CHAR_MAX)
