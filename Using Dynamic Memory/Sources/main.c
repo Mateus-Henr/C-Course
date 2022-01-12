@@ -18,7 +18,9 @@ int main(void)
 {
     while (true)
     {
+        // INITIALIZATIONS OF VARIABLES AT TOP.
         int lengthUser = 0;
+        char *string = NULL;
         
         printf("Enter the limit of the string:\n");
         if (!scanf("%d", &lengthUser))
@@ -34,7 +36,7 @@ int main(void)
           continue;
         }
     
-        char *string = (char *) malloc(lengthUser * sizeof(char));
+        string = (char *) malloc(lengthUser * sizeof(char)); // ALWAYS USE SIZEOF
     
         if (!string)
         {
