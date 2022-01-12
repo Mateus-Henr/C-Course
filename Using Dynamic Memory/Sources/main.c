@@ -16,41 +16,42 @@ void clean_stdin(void);
 
 int main(void)
 {
-  while (true)
-  {
-    int length = 0;
-
-    printf("Enter the length of the string:\n");
-    if (!scanf("%d", &length));
+    while (true)
     {
-      printf(INVALID_INPUT);
-      clean_stdin();
-      continue;
-    }
-
-    if (length <= 0)
-    {
-      printf(INVALID_INPUT);
-      continue;
-    }
-
-    char *string = (char *) malloc(length);
-
-    if (!string)
-    {
-      printf("Error while trying to allocate memory.\n");
-      system("exit");
-    }
+        int lengthUser = 0;
+        
+        printf("Enter the length of the string:\n");
+        if (!scanf("%d", &lengthUser))
+        {
+          printf(INVALID_INPUT);
+          clean_stdin();
+          continue;
+        }
     
-    printf("Enter the string:\n");
-    fgets(string, length, stdin);
+        if (lengthUser <= 0)
+        {
+          printf(INVALID_INPUT);
+          continue;
+        }
+    
+        char *string = (char *) malloc(lengthUser);
+    
+        if (!string)
+        {
+          printf("Error while trying to allocate memory.\n");
+          system("exit");
+        }
 
-    printf("String = %s\nAddress = %p\n", string, string);
-
-    free(string);
-    string = NULL;
-    break;
-  }
+        clean_stdin();
+        printf("Enter the string:\n");
+        fgets(string, lengthUser, stdin);
+    
+        printf("\nString = %s\nAddress = %p\n", string, string);
+    
+        free(string);
+        string = NULL;
+        break;
+    }
 
   return 0;
 }
