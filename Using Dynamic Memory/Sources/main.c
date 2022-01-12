@@ -20,7 +20,7 @@ int main(void)
     {
         int lengthUser = 0;
         
-        printf("Enter the length of the string:\n");
+        printf("Enter the limit of the string:\n");
         if (!scanf("%d", &lengthUser))
         {
           printf(INVALID_INPUT);
@@ -34,7 +34,7 @@ int main(void)
           continue;
         }
     
-        char *string = (char *) malloc(lengthUser);
+        char *string = (char *) malloc(lengthUser * sizeof(char));
     
         if (!string)
         {
