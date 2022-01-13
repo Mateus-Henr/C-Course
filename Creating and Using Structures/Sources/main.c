@@ -48,7 +48,7 @@
     perform the same operations that they would perform outside a struct, for example.
 
 
-    Definign the structure and variable at the same time
+    Defining the structure and variable at the same time
     C allows some flexibility while defining structures.
     It's valid to declare a variable to be of a particular structure type at the same time
     that the structure is defined.
