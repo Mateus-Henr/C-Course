@@ -24,9 +24,9 @@
                    file in position and returns 0 if tthe operation is successful. It returns
                    a non-zero integer for failure.
 
-    Setting a position in the file (ftell())
+    Setting a position in the file (fseek())
     As a complement for the "ftell()", we have the "fseek()" function.
-    The first parameter is teh FILE pointer, the second is an offset from a reference point
+    The first parameter is the FILE pointer, the second is an offset from a reference point
     specified by the third parameter, and the third parameter is the reference point that
     can be one of three values:
     - SEEK_SET: Defines the beginning of the file.
